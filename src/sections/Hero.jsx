@@ -9,6 +9,7 @@ export default function Hero(){
           <span className="inline-flex items-center gap-2 px-3 py-1 text-xs rounded-full border border-slate-200 dark:border-slate-700 mb-4">Disponible pour mission Freelance</span>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">Développeur Web Full‑Stack<br/><span className="text-primary-700 dark:text-primary">Laravel · React</span></h1>
           <p className="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl">
+            WA HAASSSSSSSSSSSSSAN
             Je conçois des APIs Laravel performantes, des interfaces React modernes et des solutions en temps réel.
             Expérience freelance avec la startup <b>FIXI</b>. Basé à {profile.location}.
           </p>
