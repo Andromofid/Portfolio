@@ -7,4 +7,7 @@ services:
     ports:
       - "3000:80"
       - "3001:443"
+    volumes:
+      - ./nginx/cert.pem:/etc/nginx/cert.pem:ro
+      - ./nginx/key.pem:/etc/nginx/key.pem:ro
     restart: unless-stopped
