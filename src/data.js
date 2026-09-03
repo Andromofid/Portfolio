@@ -1,177 +1,224 @@
 export const profile = {
   name: "Youssef El Mofid",
-  title: "Développeur Web Full‑Stack — Laravel & React",
-  location: "Marrakech, Aït Ourir",
+  title: "Développeur Full-Stack",
+  strapline: "Laravel, React, infrastructure VPS et produits web en production",
+  location: "Marrakech, Aït Ourir - Maroc",
   email: "ymofid18@gmail.com",
   phone: "+212 7 77 52 71 59",
   linkedin: "https://linkedin.com/in/el-mofid-youssef",
   github: "https://github.com/Andromofid",
-  cvUrl: "/cv_youssef_elmofid.pdf",
-};
-
-export const skills = {
-  tech: [
-    "HTML",
-    "CSS",
-    "Tailwind",
-    "PHP · Laravel",
-    "JavaScript · React",
-    "Express.js",
-    "APIs REST",
-    "Tests unitaires",
-    "MySQL",
-    "MongoDB · PyMongo",
-    "Git · GitHub",
-    "SonarQube",
-  ],
-  soft: [
-    "Gestion du temps",
-    "Travail en équipe",
-    "Communication",
-    "Résolution de problèmes",
-  ],
-  languages: [
-    "Arabe — Natif",
-    "Tamazight — Natif",
-    "Français — A2",
-    "Anglais — A2",
+  cvUrl: "/cv_youssef_elmofid1.pdf",
+  availability:
+    "Disponible pour une mission freelance ou un poste junior full-stack",
+  summary:
+    "Développeur Full-Stack avec une expérience concrète sur la conception, le développement et l'exploitation en production de FIXI.MA, une plateforme marocaine de réservation de services automobiles. À l'aise sur toute la chaîne, du back-end Laravel aux interfaces React, avec un vrai focus sur la fiabilité, la sécurité et la performance.",
+  focus: [
+    "APIs Laravel sécurisées",
+    "Interfaces React orientées conversion",
+    "Administration VPS dev et production",
+    "Workflows CRM et réservation multi-plateforme",
   ],
 };
 
-export const experiences = [
+export const spotlight = [
   {
-    title: "Migration de plateforme — Fixi.ma (WordPress → React)",
-    company: "Startup FIXI",
-    when: "2025 (Freelance)",
-    points: [
-      "Refonte front‑end vers une application React moderne (SEO & performances).",
-      "Export WordPress & import MySQL via back‑end Laravel (nettoyage & mapping).",
-      "APIs REST sécurisées pour la recherche et la réservation.",
-    ],
+    value: "2 VPS",
+    label: "administrés au quotidien",
   },
   {
-    title: "APIs mobiles — Application FIXI (Auth & Données)",
-    company: "Startup FIXI",
-    when: "2025 (Freelance)",
-    points: [
-      "APIs d’authentification : connexion classique et Google OAuth.",
-      "Endpoints pour gestion des voitures et des papiers (CRUD, alertes).",
-      "Standards REST : validation, pagination, gestion des erreurs, sécurité (tokens).",
-    ],
+    value: "3 plateformes",
+    label: "reliées autour du parcours FIXI",
   },
   {
-    title: "Réservations — Fixi.ma · Fixi+ · Fixi Pro",
-    company: "Startup FIXI",
-    when: "2024–2025 (Freelance)",
-    points: [
-      "Modèle de réservation (WordPress) + API Laravel sécurisée.",
-      "Suivi client (Fixi+) et gestion garages (Fixi Pro).",
-      "Notifications email/SMS.",
-    ],
-  },
-  {
-    title: "Suite d’applications — Fixi Plus, Fixi Pro & Fixi Admin",
-    company: "Startup FIXI",
-    when: "2024 (Freelance)",
-    points: [
-      "Modules : maintenance, documents (alertes), clients, véhicules, reporting.",
-      "Administration : utilisateurs/garages, paramétrages, tableaux de bord.",
-    ],
+    value: "2024 - présent",
+    label: "expérience produit en freelance",
   },
 ];
 
-// export const projects = [
-//   {
-//     name: "Application Bus Tracker (projet personnel)",
-//     year: "2025",
-//     desc: "Suivi en temps réel pour bus avec Laravel, React et Pusher.",
-//     bullets: [
-//       "App utilisateur : carte avec position en direct.",
-//       "Espace conducteur : envoi des coordonnées (X,Y).",
-//       "Admin : gestion des bus et des arrêts."
-//     ]
-//   },
-//   {
-//     name: "Fixi.ma",
-//     year: "2025",
-//     desc: "FIXI est une plateforme innovante qui connecte les professionnels d’entretien des véhicules et les garages de confiance avec les clients à la recherche de services de réparation et d’entretien.",
-//     bullets: ["Migration WordPress → React",
-//       "APIs Laravel et SEO/performance."
-//     ]
-//   }
-// ];
+export const experience = {
+  role: "Développeur Full-Stack",
+  company: "FIXI.MA",
+  type: "Freelance",
+  when: "2024 - Présent",
+  intro:
+    "Participation directe au produit, aux APIs, à l'infrastructure et à l'amélioration continue de l'expérience client côté web et mobile.",
+  pillars: [
+    {
+      title: "Produit & expérience utilisateur",
+      points: [
+        "Amélioration de l'ergonomie et du design de Fixi Market et de Fixi Pro avec retouches UI, harmonisation visuelle et corrections issues de rapports de bugs détaillés.",
+        "Migration complète du site vitrine de WordPress vers une architecture React connectée à une API Laravel sécurisée, avec gains visibles en SEO et en performance.",
+        "Mise en place du système de réservation multi-plateforme pour Fixi.ma, Fixi+, et Fixi Pro avec confirmations, annulations et notifications automatisées.",
+      ],
+    },
+    {
+      title: "Back-end & mobile APIs",
+      points: [
+        "Développement des APIs mobiles : authentification classique et Google OAuth, gestion des véhicules et documents, alertes d'expiration, historique des rendez-vous et notifications push.",
+        "Conception du module CRM avec gestion clients, véhicules, historique des visites et tableaux de bord multi-garages.",
+        "Intégration de Firebase Cloud Messaging pour les rappels de rendez-vous dans l'application mobile Fixi.",
+      ],
+    },
+    {
+      title: "Infrastructure & analytics",
+      points: [
+        "Administration de deux VPS, développement et production, avec gestion des accès, maintenance système et résolution d'incidents courants.",
+        "Mise en place de Google Tag Manager et GA4 sur le tunnel de réservation, avec gestion du consentement cookies.",
+        "Travail régulier autour de la stabilité, de la sécurité applicative et de la qualité de déploiement.",
+      ],
+    },
+  ],
+};
 
 export const projects = [
   {
-    name: "Application Bus Tracker (projet personnel)",
+    name: "Jarrabtiha.ma",
+    year: "2026",
+    desc: "Plateforme marocaine d'avis sur les produits cosmétiques, pensée pour un catalogue structuré et une navigation simple côté utilisateur.",
+    images: [
+      "/images/jarrabtiha.png",
+      "/images/jarrabtiha1.png",
+      "/images/jarrabtiha2.png",
+    ],
+    link: "https://jarrabtiha.ma/",
+    tags: ["Laravel 11", "Tailwind CSS", "Alpine.js", "MySQL"],
+    bullets: [
+      "Système de notation avec cache calculé pour améliorer la rapidité d'affichage.",
+      "Arborescence de 36 catégories pour organiser le catalogue beauté.",
+      "Architecture orientée contenu, filtrage et consultation rapide des produits.",
+    ],
+  },
+  {
+    name: "Bus Tracker",
     year: "2025",
-    desc: "Suivi en temps réel pour bus avec Laravel, React et Pusher.",
+    desc: "Application de suivi GPS en temps réel pour les transports, avec une expérience dédiée aux usagers, aux conducteurs et à l'administration.",
     images: [
       "/images/tracking_bus.png",
       "/images/tracking_bus1.png",
       "/images/tracking_bus2.png",
-    ], // ← add this image
-
-    link: "", // optional demo/github url
+    ],
     tags: ["Laravel", "React", "Pusher", "Temps réel"],
     bullets: [
-      "App utilisateur : carte avec position en direct.",
-      "Espace conducteur : envoi des coordonnées (X,Y).",
-      "Admin : gestion des bus et des arrêts.",
+      "Carte utilisateur avec position des bus en direct.",
+      "Espace conducteur pour l'envoi des coordonnées GPS.",
+      "Back-office pour la gestion des lignes, des véhicules et des arrêts.",
     ],
   },
   {
-    name: "Fixi.ma",
+    name: "FIXI.MA",
     year: "2025",
-    desc: "FIXI est une plateforme innovante qui connecte les professionnels d’entretien des véhicules et les garages de confiance avec les clients à la recherche de services de réparation et d’entretien.",
-    images: ["/images/fixi.png", "/images/fixi2.png"], // ← add this image
+    desc: "Plateforme de réservation de services automobiles qui relie clients, garages et applications métiers autour d'un même parcours.",
+    images: ["/images/fixi.png", "/images/fixi2.png"],
     link: "https://www.fixi.ma/",
-    tags: ["React", "Laravel", "SEO", "Migration"],
+    tags: ["React", "Laravel", "SEO", "Réservation"],
     bullets: [
-      "Migration WordPress → React",
-      "APIs Laravel et SEO/performance.",
+      "Migration de WordPress vers React pour moderniser l'expérience et améliorer le référencement.",
+      "Connexion à une API Laravel sécurisée pour la recherche, la réservation et les parcours clients.",
+      "Création d'une expérience de réservation adaptée aux besoins réels des automobilistes.",
     ],
   },
   {
-    name: "BGame — Front-end React",
-    year: "2024",
-    desc: "Interface moderne de plateforme de jeux vidéo construite en React, avec carrousel dynamique et cartes de jeux interactives.",
-    images: ["/images/bgame.png", "/images/bgame1.png"],
-    tags: ["React", "Tailwind CSS", "Front-end", "UI/UX"],
+    name: "FIXI Pro",
+    year: "2025",
+    desc: "Application métier destinée aux garages partenaires pour centraliser les rendez-vous, les clients, les véhicules et le suivi des interventions.",
+    images: [
+      "/images/fixi-pro.png",
+      "/images/fixi-pro-calendar.png",
+    ],
+    tags: ["Laravel", "Blade", "Tailwind CSS", "MySQL"],
     bullets: [
-      "Page d’accueil interactive présentant les jeux tendance (Trending Now).",
-      "Carrousel d’actualités avec navigation fluide et transitions animées.",
-      "Composants réutilisables pour cartes de jeux : images, catégories, notation, statistiques.",
-      "Design moderne inspiré du gaming, avec mode sombre et responsive layout.",
+      "Tableau de bord avec indicateurs d'activité et calendrier des rendez-vous.",
+      "Gestion centralisée des clients, des véhicules, des prestations et des interventions.",
+      "Suivi des commandes de pièces, notifications et rappels automatiques des rendez-vous.",
     ],
   },
   {
-    name: "Glow-UP — Landing Page produit",
+    name: "FIXI Admin",
+    year: "2025",
+    desc: "Back-office d'administration de l'écosystème FIXI permettant de superviser les garages, les utilisateurs et les données utilisées par les différentes applications.",
+    tags: ["Laravel", "Blade", "Tailwind CSS", "Administration"],
+    bullets: [
+      "Gestion des garages, mécaniciens, utilisateurs, villes et quartiers.",
+      "Administration du catalogue automobile, des services et des offres commerciales.",
+      "Supervision des réservations, promotions et paramètres partagés entre les applications FIXI.",
+    ],
+  },
+  {
+    name: "Glow-UP",
     year: "2024",
-    desc: "Landing page élégante en HTML/CSS pour un patch anti-imperfections, avec redirection vers la page Amazon du produit.",
+    desc: "Landing page produit pensée pour la conversion avec une identité visuelle plus éditoriale.",
     images: ["/images/glow.png"],
-    link: "https://andromofid.github.io/Glow-UP/", // ← mets ici l’URL Amazon
+    link: "https://andromofid.github.io/Glow-UP/",
     tags: ["HTML", "CSS", "Landing Page"],
     bullets: [
-      "Hero section avec texte marketing et bouton d’appel à l’action (BUY NOW).",
-      "Arrière-plan dégradé + éléments floraux floutés pour une ambiance skincare.",
-      "Mise en page responsive, typographie forte et focus sur la conversion.",
-      "Bouton CTA redirige vers Amazon (tracking possible via paramètres UTM).",
+      "Hero marketing avec appel à l'action clair.",
+      "Ambiance visuelle skincare basée sur des dégradés et des flous décoratifs.",
+      "Structure simple, responsive et centrée sur la conversion.",
     ],
   },
 ];
+
+export const skillGroups = [
+  {
+    title: "Back-end",
+    items: ["PHP", "Laravel", "Node.js", "Express", "Python", "API REST"],
+  },
+  {
+    title: "Front-end",
+    items: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Blade",
+      "Alpine.js",
+      "HTML/CSS",
+    ],
+  },
+  {
+    title: "Données & outils",
+    items: [
+      "MySQL",
+      "MongoDB",
+      "Git",
+      "GitHub",
+      "SonarQube",
+      "Tests unitaires",
+    ],
+  },
+  {
+    title: "Infra & intégrations",
+    items: ["VPS", "Nginx", "Docker", "Firebase", "Google Tag Manager", "GA4"],
+  },
+];
+
 export const education = [
   {
     school: "ISTA NTIC SYBA",
-    detail: "Développement Web Full-Stack (2022–2024)",
+    detail: "Développement Web Full-Stack",
+    years: "2022 - 2024",
   },
   {
-    school: "FSSM",
-    detail: "SMPC (2021–2022)",
+    school: "FSSM - Marrakech",
+    detail: "SMPC",
+    years: "2021 - 2022",
     img: "/images/fssm.jfif",
   },
   {
-    school: "Baccalauréat",
-    detail: "Sciences Physiques (2020–2021)",
+    school: "Baccalauréat Sciences Physiques",
+    detail: "Mention Assez Bien",
+    years: "2021",
   },
+];
+
+export const languages = [
+  { name: "Arabe", level: "Natif" },
+  { name: "Tamazight", level: "Natif" },
+  { name: "Français", level: "A2" },
+  { name: "Anglais", level: "A2" },
+];
+
+export const softSkills = [
+  "Autonomie et collaboration en équipe réduite",
+  "Résolution de problèmes techniques sous contrainte",
+  "Gestion du temps et priorisation",
 ];

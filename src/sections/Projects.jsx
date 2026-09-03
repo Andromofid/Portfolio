@@ -1,108 +1,306 @@
 import React, { useState } from "react";
 import { projects } from "../data.js";
 
+function trackProjectClick(project, clickArea = "project_card") {
+  window.dataLayer = window.dataLayer || [];
+
+  window.dataLayer.push({
+    event: "project_click",
+    project_name: project.name,
+    project_year: project.year,
+    click_area: clickArea,
+  });
+}
+
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-4 py-10">
-      <h2 className="text-2xl font-bold mb-6">Projets</h2>
+    <section
+      id="projects"
+      className="relative border-b border-white/5 py-16 md:py-24"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-1/4 h-80 w-80 rounded-full bg-indigo-500/5 blur-[120px]"
+      />
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((p) => (
-          <ProjectCard key={p.name} project={p} />
-        ))}
+      <div className="relative mx-auto max-w-6xl px-4">
+        {/* Section heading */}
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-400">
+              Projets sélectionnés
+            </p>
+
+            <h2 className="mt-4 font-serif text-4xl leading-tight text-zinc-50 md:text-5xl">
+              Des solutions concrètes, pensées pour{" "}
+              <span className="text-indigo-400">de vrais usages.</span>
+            </h2>
+          </div>
+
+          <p className="text-base leading-8 text-zinc-400 lg:max-w-xl lg:justify-self-end">
+            Une sélection de produits en production et de projets personnels
+            mettant en valeur mon travail avec Laravel, React et la création
+            d’interfaces modernes.
+          </p>
+        </div>
+
+        {/* Projects */}
+        <div className="mt-12 space-y-8">
+          {projects.map((project, projectIndex) => (
+            <ProjectCard
+              key={project.name}
+              project={project}
+              projectIndex={projectIndex}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project }) {
-  const [index, setIndex] = useState(0);
-  const total = project.images?.length || 0;
+function ProjectCard({ project, projectIndex }) {
+  const [imageIndex, setImageIndex] = useState(0);
+  const total = project.images?.length ?? 0;
 
-  const prev = () => setIndex((index - 1 + total) % total);
-  const next = () => setIndex((index + 1) % total);
+  const showPreviousImage = () => {
+    if (total <= 1) return;
+
+    setImageIndex((current) => (current - 1 + total) % total);
+    trackProjectClick(project, "previous_image");
+  };
+
+  const showNextImage = () => {
+    if (total <= 1) return;
+
+    setImageIndex((current) => (current + 1) % total);
+    trackProjectClick(project, "next_image");
+  };
+
+  const selectImage = (newIndex) => {
+    setImageIndex(newIndex);
+    trackProjectClick(project, "image_indicator");
+  };
 
   return (
-    <article className="group rounded-2xl overflow-hidden border border-slate-200/70 dark:border-slate-700/60 bg-white dark:bg-slate-900 shadow-soft hover:shadow-xl transition-all">
-      {/* Image carousel */}
-      <div className="relative aspect-video overflow-hidden">
+    <article
+      className={`group grid overflow-hidden rounded-[28px] border border-white/10 bg-zinc-900/60 shadow-xl shadow-black/10 transition duration-300 hover:border-indigo-400/25 hover:bg-zinc-900/80 hover:shadow-2xl hover:shadow-black/20 lg:grid-cols-2 ${
+        projectIndex % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""
+      }`}
+    >
+      {/* Project preview */}
+      <div className="relative min-h-[280px] overflow-hidden bg-zinc-900 sm:min-h-[360px] lg:min-h-[440px]">
         {total > 0 ? (
           <>
             <img
-              src={project.images[index]}
-              alt={`${project.name} image ${index + 1}`}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              src={project.images[imageIndex]}
+              alt={`${project.name} — aperçu ${imageIndex + 1}`}
+              className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
             />
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent"></div>
-            {/* Year */}
-            <span className="absolute top-3 right-3 text-xs px-2 py-1 rounded-full bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700">
+
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-zinc-950/5 to-transparent" />
+
+            <span className="absolute left-5 top-5 rounded-full border border-white/10 bg-zinc-950/75 px-3 py-1.5 text-xs font-semibold text-zinc-200 backdrop-blur">
               {project.year}
             </span>
 
-            {/* Nav arrows */}
             {total > 1 && (
               <>
-                <button
-                  onClick={prev}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-1 rounded-full hover:bg-white"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={next}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-1 rounded-full hover:bg-white"
-                >
-                  ›
-                </button>
-                <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
-                  {project.images.map((_, i) => (
-                    <span
-                      key={i}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        i === index ? "bg-primary-600" : "bg-white/70"
+                <div className="absolute inset-x-4 top-1/2 flex -translate-y-1/2 justify-between">
+                  <CarouselButton
+                    direction="previous"
+                    onClick={showPreviousImage}
+                    label={`Image précédente de ${project.name}`}
+                  />
+
+                  <CarouselButton
+                    direction="next"
+                    onClick={showNextImage}
+                    label={`Image suivante de ${project.name}`}
+                  />
+                </div>
+
+                <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2 rounded-full border border-white/10 bg-zinc-950/65 p-2 backdrop-blur">
+                  {project.images.map((image, index) => (
+                    <button
+                      key={`${image}-${index}`}
+                      type="button"
+                      onClick={() => selectImage(index)}
+                      aria-label={`Afficher l’image ${index + 1}`}
+                      aria-current={imageIndex === index ? "true" : undefined}
+                      className={`h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-indigo-300 ${
+                        imageIndex === index
+                          ? "w-7 bg-indigo-400"
+                          : "w-2 bg-white/40 hover:bg-white/70"
                       }`}
-                    ></span>
+                    />
                   ))}
                 </div>
               </>
             )}
           </>
         ) : (
-          <div className="h-full w-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 text-sm">
-            Image à venir
+          <div className="relative grid h-full min-h-[280px] place-items-center">
+            <div
+              aria-hidden="true"
+              className="absolute h-36 w-36 rounded-full bg-indigo-500/10 blur-3xl"
+            />
+
+            <div className="relative text-center">
+              <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/5 text-indigo-400">
+                <CodeIcon />
+              </div>
+
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                Aperçu bientôt disponible
+              </p>
+            </div>
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-5">
-        <h3 className="font-semibold text-lg">{project.name}</h3>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-          {project.desc}
-        </p>
+      {/* Project information */}
+      <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+        <div>
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-400">
+              Projet {String(projectIndex + 1).padStart(2, "0")}
+            </p>
 
-        {project.tags?.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {project.tags.map((t) => (
+            {project.link && (
+              <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-400">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
+                  <span className="relative h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                En ligne
+              </span>
+            )}
+          </div>
+
+          <h3 className="mt-5 font-serif text-3xl font-semibold leading-tight text-zinc-50 sm:text-4xl">
+            {project.name}
+          </h3>
+
+          <p className="mt-4 text-sm leading-7 text-zinc-400">{project.desc}</p>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
               <span
-                key={t}
-                className="text-xs px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700"
+                key={tag}
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-zinc-300"
               >
-                {t}
+                {tag}
               </span>
             ))}
           </div>
-        )}
 
-        {project.bullets?.length > 0 && (
-          <ul className="mt-3 list-disc list-inside text-sm space-y-1">
-            {project.bullets.map((b, i) => (
-              <li key={i}>{b}</li>
+          <ul className="mt-7 space-y-3 border-t border-white/10 pt-6">
+            {project.bullets.map((bullet) => (
+              <li
+                key={bullet}
+                className="flex gap-3 text-sm leading-7 text-zinc-400"
+              >
+                <CheckIcon />
+                <span>{bullet}</span>
+              </li>
             ))}
           </ul>
+        </div>
+
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => trackProjectClick(project, "project_link")}
+            className="group/link mt-8 inline-flex w-fit items-center gap-2 text-sm font-semibold text-zinc-100 transition hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
+          >
+            Voir le projet
+            <ArrowRightIcon />
+          </a>
         )}
       </div>
     </article>
+  );
+}
+
+function CarouselButton({ direction, onClick, label }) {
+  const isPrevious = direction === "previous";
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-zinc-950/65 text-zinc-100 backdrop-blur transition hover:scale-105 hover:border-indigo-400/40 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+    >
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 20 20"
+        fill="none"
+        className="h-5 w-5"
+      >
+        <path
+          d={isPrevious ? "m12 5-5 5 5 5" : "m8 5 5 5-5 5"}
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="none"
+      className="mt-1.5 h-4 w-4 shrink-0 text-indigo-400"
+    >
+      <path
+        d="m5 10 3 3 7-7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="none"
+      className="h-4 w-4 transition-transform group-hover/link:translate-x-1"
+    >
+      <path
+        d="M4 10h12m-5-5 5 5-5 5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CodeIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-6 w-6">
+      <path
+        d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
