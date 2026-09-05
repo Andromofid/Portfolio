@@ -25,7 +25,7 @@ export default function Splash({ onDone }) {
     >
       <div className="px-6 text-center">
         <Typewriter
-          lines={["YOUSSEF EL MOFID", "DEVELOPPEUR FULL-STACK"]}
+          lines={["YOUSSEF EL MOFID", "DEVELOPPEUR WEB FULL-STACK"]}
           speed={55}
           pause={850}
         />
