@@ -7,7 +7,7 @@ export const profile = {
   phone: "+212 7 77 52 71 59",
   linkedin: "https://linkedin.com/in/el-mofid-youssef",
   github: "https://github.com/Andromofid",
-  cvUrl: "/cv_youssef_elmofid1.pdf",
+  cvUrl: "/cv_youssef_elmofid.pdf",
   availability:
     "Disponible pour une mission freelance ou un poste junior full-stack",
   summary:
@@ -105,6 +105,20 @@ export const projects = [
     ],
   },
   {
+    name: "KechQuad — Réservation d'excursions quad & buggy",
+    year: "2026",
+    desc: "Landing page et plateforme de réservation pour une agence d'excursions quad et buggy à Marrakech, développée avec Next.js.",
+    images: ["/images/kechquad.png", "/images/kechquad-reservation.png"],
+    link: "https://marrakech-quad.vercel.app/", // ajoute l'URL du site si disponible
+    tags: ["Next.js", "Réservation", "Email", "UI/UX"],
+    bullets: [
+      "Landing page orientée conversion : hero avec image d'ambiance, chiffres clés (expérience, clients, guides) et doubles appels à l'action.",
+      "Tunnel de réservation multi-étapes (choix de l'activité, options, date) avec calcul du sous-total en temps réel.",
+      "Notification automatique par email au vendeur/gérant à chaque nouvelle réservation.",
+      "Galerie photo des excursions et des parcours proposés.",
+    ],
+  },
+  {
     name: "FIXI.MA",
     year: "2025",
     desc: "Plateforme de réservation de services automobiles qui relie clients, garages et applications métiers autour d'un même parcours.",
@@ -121,10 +135,7 @@ export const projects = [
     name: "FIXI Pro",
     year: "2025",
     desc: "Application métier destinée aux garages partenaires pour centraliser les rendez-vous, les clients, les véhicules et le suivi des interventions.",
-    images: [
-      "/images/fixi-pro.png",
-      "/images/fixi-pro-calendar.png",
-    ],
+    images: ["/images/fixi-pro.png", "/images/fixi-pro-calendar.png"],
     tags: ["Laravel", "Blade", "Tailwind CSS", "MySQL"],
     bullets: [
       "Tableau de bord avec indicateurs d'activité et calendrier des rendez-vous.",
